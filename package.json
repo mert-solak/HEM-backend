@@ -30,7 +30,6 @@
     "load-env-var": "0.4.2",
     "nestjs-pino": "^1.4.0",
     "pg": "8.6.0",
-    "pg-native": "3.0.0",
     "reflect-metadata": "0.1.13",
     "rimraf": "3.0.2",
     "rxjs": "6.6.6",
