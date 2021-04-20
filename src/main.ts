@@ -3,8 +3,8 @@ dotenv.config();
 import * as envLoader from 'load-env-var';
 
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from 'src/app.module';
 
+import { AppModule } from 'src/app.module';
 import { loggerConfig } from 'src/shared/configs/logger.config';
 
 const bootstrap = async () => {

@@ -2,7 +2,7 @@ import * as envLoader from 'load-env-var';
 
 import { SequelizeModuleOptions } from '@nestjs/sequelize';
 
-export default {
+export const databaseConfig = {
   dialect: 'postgres',
   host: envLoader.loadString('DB_HOST'),
   port: envLoader.loadNumber('DB_PORT'),
