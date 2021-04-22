@@ -1,11 +1,11 @@
-import * as envLoader from 'load-env-var';
-
 import { SequelizeModuleOptions } from '@nestjs/sequelize';
+
+import { env } from 'src/shared/utils/env.utils';
 
 export const databaseConfig = {
   dialect: 'postgres',
-  host: envLoader.loadString('DB_HOST'),
-  port: envLoader.loadNumber('DB_PORT'),
+  host: env.dbHost,
+  port: env.dbPort,
   logging: false,
   native: false,
   define: {
@@ -13,9 +13,9 @@ export const databaseConfig = {
     createdAt: true,
     updatedAt: true,
   },
-  database: envLoader.loadString('DB_NAME'),
-  username: envLoader.loadString('DB_USERNAME'),
-  password: envLoader.loadString('DB_PASSWORD'),
+  database: env.dbName,
+  username: env.dbUserName,
+  password: env.dbPassword,
   models: ['modules/**/entities/*.{js,ts}'],
   sync: {
     force: true,
