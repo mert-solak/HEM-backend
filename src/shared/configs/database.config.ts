@@ -18,7 +18,7 @@ export const databaseConfig = {
   password: envLoader.loadString('DB_PASSWORD'),
   models: ['modules/**/entities/*.{js,ts}'],
   sync: {
-    force: false,
+    force: true,
     alter: true,
   },
   synchronize: true,
