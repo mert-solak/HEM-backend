@@ -22,7 +22,7 @@ export class EquipmentService {
     try {
       await entity.save();
     } catch (error) {
-      throw createError(error, ['Equipment']);
+      throw createError(error, { moduleName: 'Equipment', relationalModule: 'Clinic' });
     }
 
     return entity;
