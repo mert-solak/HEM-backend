@@ -3,6 +3,7 @@ import { Injectable } from '@nestjs/common';
 
 import { Equipment } from 'src/modules/equipment/entities/equipment.entity';
 import { EquipmentCreateDto } from 'src/modules/equipment/dto/equipment.create.dto';
+import { createError } from 'src/shared/helpers/server-error.helper';
 
 @Injectable()
 export class EquipmentService {
@@ -12,11 +13,16 @@ export class EquipmentService {
     const entity = this.equipmentModel.build();
 
     entity.name = dto.name;
+    entity.quantity = dto.quantity;
+    entity.price = dto.price;
+    entity.usageRatio = dto.usageRatio;
+    entity.receiptDate = dto.receiptDate;
+    entity.clinicId = dto.clinicId;
 
     try {
       await entity.save();
     } catch (error) {
-      //handle error
+      throw createError(error, ['Equipment']);
     }
 
     return entity;

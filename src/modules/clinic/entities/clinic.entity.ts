@@ -9,9 +9,9 @@ export class Clinic extends Model<Clinic> {
   @Column({ type: DataType.INTEGER })
   id: number;
 
-  @Column({ type: DataType.STRING(254), allowNull: false })
+  @Column({ type: DataType.STRING(254), allowNull: false, unique: true })
   name: string;
 
-  @HasMany(() => Equipment, { onDelete: 'CASCADE', hooks: true, foreignKey: 'id' })
+  @HasMany(() => Equipment, { onDelete: 'CASCADE', hooks: true })
   equipments: Equipment[];
 }

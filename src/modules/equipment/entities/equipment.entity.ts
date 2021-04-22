@@ -5,26 +5,28 @@ import { Clinic } from 'src/modules/clinic/entities/clinic.entity';
 @Table
 export class Equipment extends Model<Equipment> {
   @PrimaryKey
-  @ForeignKey(() => Clinic)
   @AutoIncrement
   @Column({ type: DataType.INTEGER })
   id: number;
 
-  @Column({ type: DataType.STRING(254), allowNull: false })
+  @Column({ type: DataType.STRING(254), allowNull: false, unique: true })
   name: string;
 
   @Column({ type: DataType.INTEGER, allowNull: false })
   quantity: number;
 
-  @Column({ type: DataType.INTEGER, allowNull: false })
+  @Column({ type: DataType.DOUBLE, allowNull: false })
   price: number;
 
-  @Column({ type: DataType.SMALLINT, allowNull: false })
+  @Column({ type: DataType.FLOAT, allowNull: false })
   usageRatio: number;
 
   @Column({ type: DataType.DATE })
   receiptDate: Date;
 
-  @BelongsTo(() => Clinic, 'id')
+  @ForeignKey(() => Clinic)
+  clinicId: number;
+
+  @BelongsTo(() => Clinic, 'clinicId')
   clinic: Clinic;
 }
