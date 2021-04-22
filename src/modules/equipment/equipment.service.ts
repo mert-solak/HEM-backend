@@ -2,7 +2,7 @@ import { InjectModel } from '@nestjs/sequelize';
 import { Injectable } from '@nestjs/common';
 
 import { Equipment } from 'src/modules/equipment/entities/equipment.entity';
-import { EquipmentCreateDto } from 'src/modules/equipment/dto/equipment.create.dto';
+import { EquipmentCreateDto } from 'src/modules/equipment/dto/equipment-create.dto';
 import { createError } from 'src/shared/helpers/server-error.helper';
 
 @Injectable()
