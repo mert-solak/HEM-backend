@@ -5,9 +5,11 @@ import { Op } from 'sequelize';
 
 import { Clinic } from 'src/modules/clinic/entities/clinic.entity';
 import { ClinicCreateDto } from 'src/modules/clinic/dto/clinic-create.dto';
+import { ClinicDeleteDto } from './dto/clinic-delete.dto';
 import { ClinicLookup } from 'src/shared/types/clinic.type';
 import { ClinicLookupDto } from './dto/clinic-lookup.dto';
 import { ClinicUpdateDto } from './dto/clinic-update.dto';
+import { ServerError } from 'src/shared/utils/error.utils';
 import { createError } from 'src/shared/helpers/server-error.helper';
 import { createSearchQuery, createSortQuery } from 'src/shared/helpers/sequelize.helper';
 import { searchableFields, includableFields } from 'src/shared/configs/clinic.config';
@@ -74,5 +76,19 @@ export class ClinicService {
     }
 
     return entity;
+  };
+
+  delete = async (dto: ClinicDeleteDto): Promise<void> => {
+    try {
+      const entity = await this.clinicModel.findByPk(dto.id);
+
+      if (isDefined(entity)) {
+        await entity.destroy();
+      } else {
+        throw new ServerError('DATA_NOT_EXISTS', { moduleName: 'Clinic', relationalModule: 'Equipment' });
+      }
+    } catch (error) {
+      throw createError(error, { moduleName: 'Clinic', relationalModule: 'Equipment' });
+    }
   };
 }
