@@ -10,6 +10,7 @@ import { ClinicLookupDto } from './dto/clinic-lookup.dto';
 import { createError } from 'src/shared/helpers/server-error.helper';
 import { createSearchQuery, createSortQuery } from 'src/shared/helpers/sequelize.helper';
 import { searchableFields, includableFields } from 'src/shared/configs/clinic.config';
+import { ClinicUpdateDto } from './dto/clinic-update.dto';
 
 @Injectable()
 export class ClinicService {
@@ -57,5 +58,21 @@ export class ClinicService {
     } catch (error) {
       throw createError(error, { moduleName: 'Clinic', relationalModule: 'Equipment' });
     }
+  };
+
+  update = async (dto: ClinicUpdateDto): Promise<Clinic> => {
+    const entity = await this.clinicModel.findByPk(dto.id);
+
+    if (isDefined(dto.name)) {
+      entity.name = dto.name;
+    }
+
+    try {
+      await entity.save();
+    } catch (error) {
+      throw createError(error, { moduleName: 'Clinic', relationalModule: 'Equipment' });
+    }
+
+    return entity;
   };
 }
