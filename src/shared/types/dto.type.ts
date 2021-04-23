@@ -1,1 +1,1 @@
-export type OrderBy = 'ASC' | 'DESC';
+export type SortOrder = 'ASC' | 'DESC';

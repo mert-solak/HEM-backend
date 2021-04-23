@@ -1,31 +1,37 @@
-import { IsNumber, IsString, Min, Length, IsOptional } from 'class-validator';
+import { IsNumber, IsString, Min, Length, IsOptional, ArrayUnique, ArrayMinSize, ArrayMaxSize } from 'class-validator';
+import { Transform } from 'class-transformer';
 
-import { Clinic } from 'src/modules/clinic/entities/clinic.entity';
-import { OrderBy } from 'src/shared/types/dto.type';
+import { SortOrder } from 'src/shared/types/dto.type';
+import { SortableField, SearchableField } from 'src/shared/types/clinic.type';
 
 export class ClinicLookupDto {
   @IsOptional()
+  @Transform(({ value }) => +value)
   @IsNumber()
   @Min(0)
-  limit: number;
+  limit?: number;
 
   @IsOptional()
+  @Transform(({ value }) => +value)
   @IsNumber()
   @Min(0)
-  ofset: number;
+  offset?: number;
 
   @IsOptional()
   @IsString()
   @Length(1, 254)
-  sortBy: keyof Omit<Clinic, 'id' | 'equipments'>;
+  sortBy?: SortableField;
 
   @IsOptional()
   @IsString()
   @Length(1, 4)
-  orderBy: OrderBy;
+  sortOrder?: SortOrder;
 
   @IsOptional()
-  @IsString()
-  @Length(1, 254)
-  search: string;
+  @Transform(({ value }) => value.split(',').map((value: SearchableField) => value.trim()))
+  @ArrayUnique()
+  @ArrayMinSize(1)
+  @ArrayMaxSize(64)
+  @Length(1, 254, { each: true })
+  search?: SearchableField[];
 }

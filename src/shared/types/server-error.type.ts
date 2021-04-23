@@ -5,5 +5,5 @@ export type ServerErrorType = keyof typeof ServerErrorTypesEnum;
 export type ServerErrorArgsType = {
   moduleName?: string;
   relationalModule?: string;
-  [key: string]: string;
+  messages?: string[];
 };

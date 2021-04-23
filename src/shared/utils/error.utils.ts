@@ -1,6 +1,6 @@
 import { ServerErrorType, ServerErrorArgsType } from 'src/shared/types/server-error.type';
 import { ServerErrorTypesEnum } from 'src/shared/enums/server-error.enum';
-import { returnIfDefined } from 'src/shared/helpers/variable.helper';
+import { setWithDefault } from 'src/shared/helpers/variable.helper';
 
 export class ServerError extends Error {
   readonly name: string;
@@ -16,13 +16,18 @@ export class ServerError extends Error {
 
     switch (type) {
       case 'ALREADY_EXISTS':
-        this.message = `${returnIfDefined(args.moduleName, 'data')} already exists`;
-        this.statusCode = returnIfDefined(statusCode, 409);
+        this.message = `${setWithDefault(args.moduleName, 'data')} already exists`;
+        this.statusCode = setWithDefault(statusCode, 409);
         break;
 
       case 'RELATION_NOT_EXISTS':
-        this.message = `${returnIfDefined(args.relationalModule, 'data')} not exists`;
-        this.statusCode = returnIfDefined(statusCode, 400);
+        this.message = `${setWithDefault(args.relationalModule, 'data')} not exists`;
+        this.statusCode = setWithDefault(statusCode, 409);
+        break;
+
+      case 'VALIDATION_ERROR':
+        this.message = args.messages.join(',');
+        this.statusCode = setWithDefault(statusCode, 400);
         break;
 
       default:
