@@ -2,7 +2,7 @@ import { IsNumber, IsOptional, IsString, Length, Min } from 'class-validator';
 
 export class ClinicUpdateDto {
   @IsNumber()
-  @Min(0)
+  @Min(1)
   id: number;
 
   @IsOptional()

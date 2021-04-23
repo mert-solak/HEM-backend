@@ -7,4 +7,4 @@ export interface ClinicLookup {
 
 export type SortableField = keyof Pick<Clinic, 'name' | 'createdAt' | 'updatedAt'>;
 
-export type SearchableField = keyof Pick<Clinic, 'name'>;
+export type SearchableField = keyof Pick<Clinic, 'name' | 'createdAt' | 'updatedAt'>;

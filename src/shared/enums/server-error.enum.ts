@@ -5,4 +5,5 @@ export enum ServerErrorTypesEnum {
 
   ALREADY_EXISTS,
   RELATION_NOT_EXISTS,
+  DATA_NOT_EXISTS,
 }

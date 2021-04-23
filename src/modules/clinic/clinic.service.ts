@@ -7,10 +7,10 @@ import { Clinic } from 'src/modules/clinic/entities/clinic.entity';
 import { ClinicCreateDto } from 'src/modules/clinic/dto/clinic-create.dto';
 import { ClinicLookup } from 'src/shared/types/clinic.type';
 import { ClinicLookupDto } from './dto/clinic-lookup.dto';
+import { ClinicUpdateDto } from './dto/clinic-update.dto';
 import { createError } from 'src/shared/helpers/server-error.helper';
 import { createSearchQuery, createSortQuery } from 'src/shared/helpers/sequelize.helper';
 import { searchableFields, includableFields } from 'src/shared/configs/clinic.config';
-import { ClinicUpdateDto } from './dto/clinic-update.dto';
 
 @Injectable()
 export class ClinicService {

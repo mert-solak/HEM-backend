@@ -5,7 +5,7 @@ import { SearchableField, SortableField } from 'src/shared/types/clinic.type';
 
 export const sortableFields: SortableField[] = ['name', 'updatedAt', 'createdAt'];
 
-export const searchableFields: SearchableField[] = ['name'];
+export const searchableFields: SearchableField[] = ['name', 'updatedAt', 'createdAt'];
 
 export const includableFields: Includeable[] = [
   {

@@ -9,7 +9,7 @@ export class Equipment extends Model<Equipment> {
   @Column({ type: DataType.INTEGER })
   id: number;
 
-  @Column({ type: DataType.STRING(254), allowNull: false, unique: true })
+  @Column({ type: DataType.STRING(254), allowNull: false })
   name: string;
 
   @Column({ type: DataType.INTEGER, allowNull: false })

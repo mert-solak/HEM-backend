@@ -22,12 +22,17 @@ export class ServerError extends Error {
 
       case 'RELATION_NOT_EXISTS':
         this.message = `${setWithDefault(args.relationalModule, 'data')} not exists`;
-        this.statusCode = setWithDefault(statusCode, 409);
+        this.statusCode = setWithDefault(statusCode, 404);
         break;
 
       case 'VALIDATION_ERROR':
         this.message = args.messages.join(',');
         this.statusCode = setWithDefault(statusCode, 400);
+        break;
+
+      case 'DATA_NOT_EXISTS':
+        this.message = `${setWithDefault(args.moduleName, 'data')} not exists`;
+        this.statusCode = setWithDefault(statusCode, 404);
         break;
 
       default:
