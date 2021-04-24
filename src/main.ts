@@ -14,6 +14,8 @@ const bootstrap = async () => {
   app.useGlobalFilters(new GlobalExceptionFilter());
   app.useGlobalPipes(validationPipe);
 
+  app.enableCors();
+
   await app.listen(env.port, env.host);
 };
 

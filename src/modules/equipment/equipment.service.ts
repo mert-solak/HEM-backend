@@ -13,6 +13,7 @@ import { createSearchQuery, createSortQuery } from 'src/shared/helpers/sequelize
 import { includableFields, searchableFields } from 'src/shared/configs/equipment.config';
 import { EquipmentDeleteDto } from './dto/equipment-delete.dto';
 import { ServerError } from 'src/shared/utils/error.utils';
+import { EquipmentGetDto } from './dto/equipment-get.dto';
 
 @Injectable()
 export class EquipmentService {
@@ -55,6 +56,8 @@ export class EquipmentService {
 
     if (isDefined(dto.sortBy) && isDefined(dto.sortOrder)) {
       query.order = createSortQuery(dto.sortBy, dto.sortOrder);
+    } else {
+      query.order = createSortQuery('createdAt', 'DESC');
     }
 
     query.where = where;
@@ -108,6 +111,16 @@ export class EquipmentService {
       } else {
         throw new ServerError('DATA_NOT_EXISTS', { moduleName: 'Equipment', relationalModule: 'Clinic' });
       }
+    } catch (error) {
+      throw createError(error, { moduleName: 'Equipment', relationalModule: 'Clinic' });
+    }
+  };
+
+  get = async (dto: EquipmentGetDto): Promise<Equipment> => {
+    try {
+      const entity = await this.equipmentModel.findByPk(dto.id, { include: includableFields });
+
+      return entity;
     } catch (error) {
       throw createError(error, { moduleName: 'Equipment', relationalModule: 'Clinic' });
     }

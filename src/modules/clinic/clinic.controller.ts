@@ -7,14 +7,20 @@ import { ClinicLookupDto } from './dto/clinic-lookup.dto';
 import { ClinicService } from 'src/modules/clinic/clinic.service';
 import { ClinicUpdateDto } from './dto/clinic-update.dto';
 import { ClinicDeleteDto } from './dto/clinic-delete.dto';
+import { ClinicGetDto } from './dto/clinic-get.dto';
 
 @Controller('clinic')
 export class ClinicController {
   constructor(private readonly clinicService: ClinicService) {}
 
-  @Get('/')
+  @Get('/lookup')
   async lookup(@Query() dto: ClinicLookupDto): Promise<ClinicLookup> {
     return this.clinicService.lookup(dto);
+  }
+
+  @Get('/')
+  async get(@Query() dto: ClinicGetDto): Promise<Clinic> {
+    return this.clinicService.get(dto);
   }
 
   @Post('/')

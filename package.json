@@ -27,6 +27,7 @@
     "@nestjs/sequelize": "0.2.0",
     "class-transformer": "^0.4.0",
     "class-validator": "0.13.1",
+    "cors": "^2.8.5",
     "dotenv": "8.2.0",
     "load-env-var": "0.4.2",
     "lodash": "^4.17.21",

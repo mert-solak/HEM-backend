@@ -7,14 +7,20 @@ import { EquipmentLookupDto } from './dto/equipment-lookup.dto';
 import { EquipmentUpdateDto } from './dto/equipment-update.dto';
 import { EquipmentDeleteDto } from './dto/equipment-delete.dto';
 import { EquipmentLookup } from 'src/shared/types/equipment.type';
+import { EquipmentGetDto } from './dto/equipment-get.dto';
 
 @Controller('equipment')
 export class EquipmentController {
   constructor(private readonly equipmentService: EquipmentService) {}
 
-  @Get('/')
+  @Get('/lookup')
   async lookup(@Query() dto: EquipmentLookupDto): Promise<EquipmentLookup> {
     return this.equipmentService.lookup(dto);
+  }
+
+  @Get('/')
+  async get(@Query() dto: EquipmentGetDto): Promise<Equipment> {
+    return this.equipmentService.get(dto);
   }
 
   @Post('/')
