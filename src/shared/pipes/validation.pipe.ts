@@ -11,8 +11,6 @@ export const validationPipe = new ValidationPipe({
     const errorMessages: string[] = [];
 
     validationErrors.forEach((validationError: ValidationError) => {
-      console.log(validationError);
-      console.log(_.values(validationError.constraints));
       errorMessages.push(..._.values(validationError.constraints));
     });
 
