@@ -13,9 +13,7 @@ export const sortableFields: SortableField[] = [
   'createdAt',
 ];
 
-export const searchableFields: SearchableField[] = [
-  'name',
-];
+export const searchableFields: SearchableField[] = ['name'];
 
 export const includableFields: Includeable[] = [
   {
