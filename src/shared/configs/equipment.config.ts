@@ -15,12 +15,6 @@ export const sortableFields: SortableField[] = [
 
 export const searchableFields: SearchableField[] = [
   'name',
-  'price',
-  'quantity',
-  'receiptDate',
-  'usageRatio',
-  'updatedAt',
-  'createdAt',
 ];
 
 export const includableFields: Includeable[] = [
