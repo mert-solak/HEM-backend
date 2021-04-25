@@ -1,19 +1,19 @@
 import { InjectModel } from '@nestjs/sequelize';
 import { Injectable } from '@nestjs/common';
-import { isDefined } from 'class-validator';
 import { Op } from 'sequelize';
+import { isDefined } from 'class-validator';
 
 import { Equipment } from 'src/modules/equipment/entities/equipment.entity';
 import { EquipmentCreateDto } from 'src/modules/equipment/dto/equipment-create.dto';
+import { EquipmentDeleteDto } from 'src/modules/equipment/dto/equipment-delete.dto';
+import { EquipmentGetDto } from 'src/modules/equipment/dto/equipment-get.dto';
 import { EquipmentLookup } from 'src/shared/types/equipment.type';
-import { EquipmentLookupDto } from './dto/equipment-lookup.dto';
+import { EquipmentLookupDto } from 'src/modules/equipment/dto/equipment-lookup.dto';
 import { EquipmentUpdateDto } from 'src/modules/equipment/dto/equipment-update.dto';
+import { ServerError } from 'src/shared/utils/error.utils';
 import { createError } from 'src/shared/helpers/server-error.helper';
 import { createSearchQuery, createSortQuery } from 'src/shared/helpers/sequelize.helper';
 import { includableFields, searchableFields } from 'src/shared/configs/equipment.config';
-import { EquipmentDeleteDto } from './dto/equipment-delete.dto';
-import { ServerError } from 'src/shared/utils/error.utils';
-import { EquipmentGetDto } from './dto/equipment-get.dto';
 
 @Injectable()
 export class EquipmentService {

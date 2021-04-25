@@ -2,12 +2,12 @@ import { Body, Controller, Get, Patch, Post, Query, Delete } from '@nestjs/commo
 
 import { Clinic } from 'src/modules/clinic/entities/clinic.entity';
 import { ClinicCreateDto } from 'src/modules/clinic/dto/clinic-create.dto';
+import { ClinicDeleteDto } from 'src/modules/clinic/dto/clinic-delete.dto';
+import { ClinicGetDto } from 'src/modules/clinic/dto/clinic-get.dto';
 import { ClinicLookup } from 'src/shared/types/clinic.type';
-import { ClinicLookupDto } from './dto/clinic-lookup.dto';
+import { ClinicLookupDto } from 'src/modules/clinic/dto/clinic-lookup.dto';
 import { ClinicService } from 'src/modules/clinic/clinic.service';
-import { ClinicUpdateDto } from './dto/clinic-update.dto';
-import { ClinicDeleteDto } from './dto/clinic-delete.dto';
-import { ClinicGetDto } from './dto/clinic-get.dto';
+import { ClinicUpdateDto } from 'src/modules/clinic/dto/clinic-update.dto';
 
 @Controller('clinic')
 export class ClinicController {

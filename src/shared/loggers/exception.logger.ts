@@ -1,9 +1,9 @@
 import pino from 'pino';
+import { join } from 'path';
+
 import { paths } from 'src/shared/utils/path.utils';
 import { loggerConfig } from 'src/shared/configs/logger.config';
-
-import { join } from 'path';
-import { env } from '../utils/env.utils';
+import { env } from 'src/shared/utils/env.utils';
 
 export default pino(
   {

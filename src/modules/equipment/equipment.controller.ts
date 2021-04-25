@@ -2,12 +2,12 @@ import { Body, Controller, Post, Get, Patch, Query, Delete } from '@nestjs/commo
 
 import { Equipment } from 'src/modules/equipment/entities/equipment.entity';
 import { EquipmentCreateDto } from 'src/modules/equipment/dto/equipment-create.dto';
-import { EquipmentService } from 'src/modules/equipment/equipment.service';
-import { EquipmentLookupDto } from './dto/equipment-lookup.dto';
-import { EquipmentUpdateDto } from './dto/equipment-update.dto';
-import { EquipmentDeleteDto } from './dto/equipment-delete.dto';
+import { EquipmentDeleteDto } from 'src/modules/equipment/dto/equipment-delete.dto';
+import { EquipmentGetDto } from 'src/modules/equipment/dto/equipment-get.dto';
 import { EquipmentLookup } from 'src/shared/types/equipment.type';
-import { EquipmentGetDto } from './dto/equipment-get.dto';
+import { EquipmentLookupDto } from 'src/modules/equipment/dto/equipment-lookup.dto';
+import { EquipmentService } from 'src/modules/equipment/equipment.service';
+import { EquipmentUpdateDto } from 'src/modules/equipment/dto/equipment-update.dto';
 
 @Controller('equipment')
 export class EquipmentController {

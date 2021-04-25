@@ -1,4 +1,5 @@
 import { IsNumber, IsString, Length, Min, Max, IsOptional, IsDateString } from 'class-validator';
+import { Transform } from 'class-transformer';
 
 export class EquipmentUpdateDto {
   @IsNumber()
@@ -11,16 +12,19 @@ export class EquipmentUpdateDto {
   name?: string;
 
   @IsOptional()
+  @Transform(({ value }) => +value)
   @IsNumber()
   @Min(1)
   quantity?: number;
 
   @IsOptional()
+  @Transform(({ value }) => +value)
   @IsNumber()
   @Min(0.01)
   price?: number;
 
   @IsOptional()
+  @Transform(({ value }) => +value)
   @IsNumber()
   @Min(0)
   @Max(100)

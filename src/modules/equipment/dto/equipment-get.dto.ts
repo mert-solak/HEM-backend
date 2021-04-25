@@ -1,5 +1,5 @@
-import { Transform } from 'class-transformer';
 import { IsNumber, Min } from 'class-validator';
+import { Transform } from 'class-transformer';
 
 export class EquipmentGetDto {
   @Transform(({ value }) => +value)

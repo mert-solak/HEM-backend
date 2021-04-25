@@ -1,19 +1,19 @@
 import { InjectModel } from '@nestjs/sequelize';
 import { Injectable } from '@nestjs/common';
-import { isDefined } from 'class-validator';
 import { Op } from 'sequelize';
+import { isDefined } from 'class-validator';
 
 import { Clinic } from 'src/modules/clinic/entities/clinic.entity';
 import { ClinicCreateDto } from 'src/modules/clinic/dto/clinic-create.dto';
-import { ClinicDeleteDto } from './dto/clinic-delete.dto';
+import { ClinicDeleteDto } from 'src/modules/clinic/dto/clinic-delete.dto';
+import { ClinicGetDto } from 'src/modules/clinic/dto/clinic-get.dto';
 import { ClinicLookup } from 'src/shared/types/clinic.type';
-import { ClinicLookupDto } from './dto/clinic-lookup.dto';
-import { ClinicUpdateDto } from './dto/clinic-update.dto';
+import { ClinicLookupDto } from 'src/modules/clinic/dto/clinic-lookup.dto';
+import { ClinicUpdateDto } from 'src/modules/clinic/dto/clinic-update.dto';
 import { ServerError } from 'src/shared/utils/error.utils';
 import { createError } from 'src/shared/helpers/server-error.helper';
 import { createSearchQuery, createSortQuery } from 'src/shared/helpers/sequelize.helper';
 import { searchableFields, includableFields } from 'src/shared/configs/clinic.config';
-import { ClinicGetDto } from './dto/clinic-get.dto';
 
 @Injectable()
 export class ClinicService {
